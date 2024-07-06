@@ -1,0 +1,28 @@
+* {
+    background-color: #1c2e4e;
+    color: white;
+}
+
+body {
+    padding: 10px;
+}
+
+.headings {
+    display: flex;
+    border: 2px solid rgba(255, 255, 255, 0.486);
+    border-radius: 2px;
+    padding: 10px;
+}
+h1 {
+    font-size: 1.5rem;
+    flex-grow: 1;
+}
+#playerScore, #computerScore {
+    border:1px solid white;
+    border-radius: 4px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
