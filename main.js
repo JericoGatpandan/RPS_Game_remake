@@ -1,8 +1,8 @@
 function getComputerChoice() {
     randomNumber = Math.random();
-    if (randomNumber < 0.33){
+    if (randomNumber < 0.33) {
         return "rock";
-    } else if (randomNumber < 0.66){
+    } else if (randomNumber < 0.66) {
         return "paper";
     } else {
         return "scissors";
@@ -13,32 +13,8 @@ const rockbtn = document.querySelector("#rock");
 const paperbtn = document.querySelector("#paper");
 const scissorsbtn = document.querySelector("#scissors");
 const result = document.querySelector(".winLose");
-
-
-let humanScore = 0;
-let computerScore = 0;
-
-function playRound(humanChoice, ComputerChoice) {
-    if (humanChoice == "rock" && ComputerChoice == "scissors"){
-        console.log("YOU WIN");
-        humanScore++;
-    }
-    else if (humanChoice == "paper" && ComputerChoice == "rock"){
-        console.log("YOU WIN");
-        humanScore++;
-    }
-    else if (humanChoice == "scissors" && ComputerChoice == "paper"){
-        console.log("YOU WIN");
-        humanScore++;
-    }
-    else if (humanChoice == ComputerChoice){
-        console.log("IT'S A TIE")
-    }
-    else {
-        console.log("YOU LOSE");
-        computerScore++;
-    }
-}
+const hScore = document.querySelector(".hScore");
+const cScore = document.querySelector(".cScore");
 
 rockbtn.addEventListener('click', () => {
     playRound("rock", getComputerChoice());
@@ -49,5 +25,33 @@ paperbtn.addEventListener('click', () => {
 scissorsbtn.addEventListener('click', () => {
     playRound("scissors", getComputerChoice());
 });
+
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        result.textContent = "IT'S A TIE";
+    }
+    else if ((humanChoice == "rock" && computerChoice == "scissors") ||
+        (humanChoice == "paper" && computerChoice == "rock") ||
+        (humanChoice == "scissors" && computerChoice == "paper")) {
+        result.textContent = "YOU WIN";
+        humanScore = humanScore + 1;
+    } else if (humanChoice == "scissors" && computerChoice == "rock") {
+        result.textContent = "YOU LOSE";
+        computerScore = computerScore + 1;
+    } else if (humanChoice == "rock" && computerChoice == "paper") {
+        result.textContent = "YOU LOSE";
+        computerScore = computerScore + 1;
+    } else if (humanChoice == "paper" && computerChoice == "scissors") {
+        result.textContent = "YOU LOSE";
+        computerScore = computerScore + 1;
+    }
+    hScore.textContent = humanScore;
+    cScore.textContent = computerScore;
+}
+
 
 
