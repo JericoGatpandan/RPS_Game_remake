@@ -15,7 +15,12 @@ const scissorsbtn = document.querySelector("#scissors");
 const result = document.querySelector(".winLose");
 const hScore = document.querySelector(".hScore");
 const cScore = document.querySelector(".cScore");
+const start = document.querySelector(".start");
+const humanChoiceImg = document.querySelector("#humanChoice")
+const computerChoiceImg = document.querySelector("#computerChoice")
 
+
+function playGame(){
 rockbtn.addEventListener('click', () => {
     playRound("rock", getComputerChoice());
 });
@@ -31,6 +36,15 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
+
+    const choices = {
+        rock: './assets/rock.png',
+        paper: './assets/paper.png',
+        scissors: './assets/scissors.png'
+    }
+    humanChoiceImg.src = choices[humanChoice];
+    computerChoiceImg.src = choices[computerChoice];
+
     if (humanChoice === computerChoice) {
         result.textContent = "IT'S A TIE";
     }
@@ -53,5 +67,10 @@ function playRound(humanChoice, computerChoice) {
     cScore.textContent = computerScore;
 }
 
+}
+start.addEventListener('click', () => {
+    playGame();
+    start.textContent = "PLAY AGAIN";
+})
 
 
